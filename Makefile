@@ -6,10 +6,10 @@ all: $(patsubst %.c,%.times,$(wildcard *.c))
 	cat $^ > $@
 
 %.rv64gc.time: %.rv64gc.static
-	/usr/bin/time qemu-riscv64 -cpu rv64,v=false $< > $@
+	/usr/bin/time qemu-riscv64 -cpu rv64,v=false $< 2> $@
 
 %.rv64gcv.time: %.rv64gcv.static
-	/usr/bin/time qemu-riscv64 -cpu rv64,v=true $< > $@
+	/usr/bin/time qemu-riscv64 -cpu rv64,v=true $< 2> $@
 
 %.dump: %.static
 	riscv64-unknown-linux-gnu-objdump -d $< > $@
